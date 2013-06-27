@@ -11,7 +11,7 @@ exports.upload_file = function(req, res, next) {
     */
     var ins = fs.createReadStream(req.files.audio.path);
     //var ous_p = __dirname + '/static/uploads/'+req.files.audio.name;
-    var ous_p = __dirname + '/static/uploads/blobs.wav';
+    var ous_p = __dirname + '/static/uploads/blob.wav';
 
     console.log('ous_p : ' + ous_p);
     var ous = fs.createWriteStream(ous_p);

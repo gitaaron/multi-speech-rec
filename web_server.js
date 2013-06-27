@@ -22,14 +22,17 @@ app.post('/upload', function(req, res, next) {
 
 });
 
-server.listen(8086);
-console.log('listening on port 8086...');
+server.listen(9022);
+console.log('listening on port 9022...');
 
 var buffer = [];
 
 io.sockets.on('connection', function(client){
     client.on('message', function(message) {
         client.emit('message', {'translation':'asdf'});
+    });    
+
+    client.on('translate', function(message) {
         var googleSpawn = spawn('sh', ['google_voice.sh'], {env:process.env}); 
         googleSpawn.stdout.on('data', function(data) {
             data = new String(data);
@@ -51,11 +54,6 @@ io.sockets.on('connection', function(client){
         ibmSpawn.stderr.on('data', function(data) {
             console.log('ibm err : ' + data); 
         });
-
-
-    });    
-
-    client.on('translate', function(message) {
 
 
     });

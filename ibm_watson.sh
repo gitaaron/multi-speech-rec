@@ -7,4 +7,4 @@ curl "https://api.att.com/rest/2/SpeechToText" \
     --header "Content-type: audio/wav" \
     --header "Accept: application/json" \
     --header "X-SpeechContext: Generic" \
-    --data-binary "@/Users/surtyaar/Project/demos/ethan/speech_rec/static/uploads/blob_m.wav"
+    --data-binary "@static/uploads/blob_m.wav"

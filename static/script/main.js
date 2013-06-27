@@ -17,7 +17,7 @@ $(function () {
       $("audio#recorded-audio").get()[0].load();
       var fd = new FormData();
       fd.append('audio', wav);
-      $('#message').append('uploading...<br />');
+      $('#message').append($('<p>uploading...</p>'));
       $.ajax({
           type:'POST',
           url:'/upload',
@@ -25,7 +25,7 @@ $(function () {
           processData:false,
           contentType:false
       }).done(function(data) {
-        $('#message').append('translating...');
+        $('#message').append($('<p>translating...</p>'));
 
         console.log(data);
         socket.emit('translate',{});

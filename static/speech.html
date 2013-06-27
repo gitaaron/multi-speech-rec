@@ -9,7 +9,7 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        var socket = io.connect('http://localhost');
+        var socket = io.connect();
         socket.on('connect', function() {
             console.log('connected');
             socket.emit('message', { });
@@ -23,11 +23,15 @@
         socket.on('google', function (data) {
             var t = JSON.parse(data.translation).hypotheses[0].utterance;
             console.log('google voice translation: ' + t);
+            $('#message').append($('<p>google voice translation: ' + t+'</p>'));
+
         });
 
         socket.on('ibm', function (data) {
             var t= JSON.parse(data.translation).Recognition.NBest[0].ResultText;
             console.log('ibm watson translation: ' + t);
+            $('#message').append($('<p>ibm watson translation: ' + t+'</p>'));
+
         });
 
 
